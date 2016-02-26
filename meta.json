@@ -23,7 +23,7 @@
         },
         {
             "id": "messageId",
-            "title": "The message ID",
+            "title": "The message ID"
         },
         {
             "id": "labelIds",
