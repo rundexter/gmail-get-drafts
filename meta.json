@@ -27,7 +27,7 @@
         },
         {
             "id": "labelIds",
-            "title": "The label IDs",
+            "title": "The label IDs"
         },
         {
             "id": "snippet",
@@ -35,7 +35,7 @@
         },
         {
             "id": "history",
-            "title": "The message history",
+            "title": "The message history"
         },
         {
             "id": "internalDate",
@@ -47,7 +47,7 @@
         },
         {
             "id": "body",
-            "title": "Message body",
+            "title": "Message body"
         },
         {
             "id": "parts",
