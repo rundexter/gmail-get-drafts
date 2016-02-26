@@ -25,11 +25,15 @@ module.exports = {
         var max  = step.input( 'maxResults' ).first();
         var tok  = step.input( 'pageToken' ).first();
 
-        service.users.drafts.list( { 'userId': user, 'maxResults': max, 'pageToken': tok }, function( error, drafts ) {
+        var results = [ ];
+        service.users.drafts.list( { 'userId': user, 'maxResults': max, 'pageToken': tok }, function( error, res ) {
             if ( error ) return this.fail( error );
 
-            return this.complete( drafts );
-        }.bind( this ) );
+            res.drafts.forEach( function( draft ) {
+                results.push( { 'id': draft.id, 'messageId': draft.message.id, 'threadId': draft.message.threadId } );
+            } );
 
+            return this.complete( results );
+        }.bind( this ) );
     }
 };

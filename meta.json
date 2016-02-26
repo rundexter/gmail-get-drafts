@@ -26,32 +26,8 @@
             "title": "The message ID"
         },
         {
-            "id": "labelIds",
-            "title": "The label IDs"
-        },
-        {
-            "id": "snippet",
-            "title": "The message snippet"
-        },
-        {
-            "id": "history",
-            "title": "The message history"
-        },
-        {
-            "id": "internalDate",
-            "title": "The date"
-        },
-        {
-            "id": "payload",
-            "title": "Message payload"
-        },
-        {
-            "id": "body",
-            "title": "Message body"
-        },
-        {
-            "id": "parts",
-            "title": "Message parts"
+            "id": "threadId",
+            "title": "The thread ID"
         }
     ],
     "providers": [{
