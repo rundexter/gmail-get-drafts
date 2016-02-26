@@ -2,25 +2,66 @@
  * Metadata describing the module operation
  */
 {
-    //Required. Inputs the module expects.
     "inputs": [
-        //e.g.
-        /*
         {
-            "id": "from",
-            "title":"From"
+            "id": "userId",
+            "title":"The user's email address"
+        },
+        {
+            "id": "maxResults",
+            "title": "Maximum number of drafts to return"
+        },
+        {
+            "id": "pageToken",
+            "title": "Page token to retrieve a specific page"
         }
-        */
     ],
-    //Required. Outputs the module emits.
     "outputs": [
-      //e.g.
-      /*
         {
-            "id": "from",
-            "title":"From"
+            "id": "id",
+            "title":"The immutable draft ID"
+        },
+        {
+            "id": "messageId",
+            "title": "The message ID",
+        },
+        {
+            "id": "labelIds",
+            "title": "The label IDs",
+        },
+        {
+            "id": "snippet",
+            "title": "The message snippet"
+        },
+        {
+            "id": "history",
+            "title": "The message history",
+        },
+        {
+            "id": "internalDate",
+            "title": "The date"
+        },
+        {
+            "id": "payload",
+            "title": "Message payload"
+        },
+        {
+            "id": "body",
+            "title": "Message body",
+        },
+        {
+            "id": "parts",
+            "title": "Message parts"
         }
-      */
     ],
-    "title": "Gmail get drafts" /* Required.A display name for the module */
+    "providers": [{
+        "name": "google",
+        "scopes": [
+            "https://mail.google.com/",
+            "https://www.googleapis.com/auth/gmail.modify",
+            "https://www.googleapis.com/auth/gmail.compose"
+        ]
+    }],
+    "icon": "google-plus",
+    "title": "Gmail get drafts"
 }

@@ -1,3 +1,8 @@
+var _ = require('lodash'),
+    Q = require( 'q' ),
+    google = require('googleapis'),
+    service = google.gmail('v1');
+
 module.exports = {
     /**
      * The main entry point for the Dexter module
@@ -6,8 +11,25 @@ module.exports = {
      * @param {AppData} dexter Container for all data used in this workflow.
      */
     run: function(step, dexter) {
-        var results = { foo: 'bar' };
-        //Call this.complete with the module's output.  If there's an error, call this.fail(message) instead.
-        this.complete(results);
+        var OAuth2 = google.auth.OAuth2,
+            oauth2Client = new OAuth2(),
+            credentials = dexter.provider('google').credentials();
+
+        // set credential
+        oauth2Client.setCredentials({
+            access_token: _.get(credentials, 'access_token')
+        });
+        google.options({ auth: oauth2Client });
+
+        var user = step.input( 'userId' ).first();
+        var max  = step.input( 'maxResults' ).first();
+        var tok  = step.input( 'pageToken' ).first();
+
+        service.users.drafts.list( { 'userId': user, 'maxResults': max, 'pageToken': tok }, function( error, drafts ) {
+            if ( error ) return this.fail( error );
+
+            return this.complete( drafts );
+        }.bind( this ) );
+
     }
 };
